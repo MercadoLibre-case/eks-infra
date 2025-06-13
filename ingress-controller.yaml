@@ -1,0 +1,76 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-mercadolibre-case
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "120"
+    alb.ingress.kubernetes.io/target-group-attributes: slow_start.duration_seconds=120
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "10"
+    alb.ingress.kubernetes.io/success-codes: "200"
+    alb.ingress.kubernetes.io/healthy-threshold-count: "2"
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"
+    alb.ingress.kubernetes.io/healthcheck-path: /
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /products
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-product-service
+                port:
+                  number: 8000
+          - path: /products/
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-product-service
+                port:
+                  number: 8000
+          - path: /payment
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-payment-service
+                port:
+                  number: 8070
+          - path: /payment/
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-payment-service
+                port:
+                  number: 8070
+          - path: /sellers
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-seller-service
+                port:
+                  number: 8080
+          - path: /sellers/
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-seller-service
+                port:
+                  number: 8080
+          - path: /reviews
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-review-service
+                port:
+                  number: 8090
+          - path: /reviews/
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-review-service
+                port:
+                  number: 8090
