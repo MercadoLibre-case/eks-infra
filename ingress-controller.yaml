@@ -22,7 +22,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: mercadolibre-frontend
+                name: product-web
                 port:
                   number: 3000
           - path: /products
