@@ -18,6 +18,13 @@ spec:
   rules:
     - http:
         paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mercadolibre-frontend
+                port:
+                  number: 80
           - path: /products
             pathType: Prefix
             backend:
