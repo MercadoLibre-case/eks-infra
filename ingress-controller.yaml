@@ -24,7 +24,7 @@ spec:
               service:
                 name: mercadolibre-frontend
                 port:
-                  number: 80
+                  number: 3000
           - path: /products
             pathType: Prefix
             backend:
