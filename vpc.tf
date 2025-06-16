@@ -10,7 +10,7 @@ resource "aws_default_subnet" "subnetmercadolibre-case" {
   tags = {
     Name = "Default subnet for ca-central-1a to Tech Challenge",
     "kubernetes.io/role/elb" = "1"
-    "kubernetes.io/cluster/mercadolibre-case" = "owned"
+    "kubernetes.io/cluster/mercadolibre-case" = "shared"
   }
 }
 
@@ -20,6 +20,6 @@ resource "aws_default_subnet" "subnetmercadolibre-case2" {
   tags = {
     Name = "Default subnet for ca-central-1b to Tech Challenge",
     "kubernetes.io/role/elb" = "1"
-    "kubernetes.io/cluster/mercadolibre-case" = "owned"
+    "kubernetes.io/cluster/mercadolibre-case" = "shared"
   }
 }
